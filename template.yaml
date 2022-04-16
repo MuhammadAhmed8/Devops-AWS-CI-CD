@@ -19,3 +19,7 @@ Resources:
           Properties:
             Path: /api
             Method: get
+      
+      Environment:
+        Variables:
+          REGION: us-west-1
