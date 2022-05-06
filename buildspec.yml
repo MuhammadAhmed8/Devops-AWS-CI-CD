@@ -3,13 +3,16 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-       python: 3.7
+      python: 3.8
+  pre_build:
     commands:
-      - pip install cfn-lint
+      - echo Nothing to do in the pre_build phase...
   build:
     commands:
-      - cfn-lint -t template.yaml
-      - aws cloudformation package --template-file template.yaml --s3-bucket bucket0256 --output-template-file packaged-template.yaml
+      - aws cloudformation package --template-file samTemplate.yaml --s3-bucket bucket0256 --output-template-file outputSamTemplate.yaml
+  post_build:
+    commands:
 artifacts:
   files:
-    - packaged-template.yaml
+      - samTemplate.yaml
+      - outputSamTemplate.yaml
